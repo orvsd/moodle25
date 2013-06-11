@@ -30,7 +30,7 @@ $orvsdfqdn = $orvsdcwd[5];
 // Now you need to tell Moodle where it is located. Specify the full
 // web address to where moodle has been installed.
 $CFG->wwwroot   = 'http://' . $orvsdfqdn;
-$CFG->dataroot  = '/data/moodledata/' . $orvsduser . '/moodle22/' . $orvsdfqdn;
+$CFG->dataroot  = '/data/moodledata/' . $orvsduser . '/moodle25/' . $orvsdfqdn;
 $CFG->directorypermissions = 02770;
 
 // ORVSD ClamAV config
@@ -39,7 +39,7 @@ $CFG->pathtoclam = '/usr/bin/clamscan';
 $CFG->quarantinedir = $CFG->dataroot . '/temp';
 
 // Include relevant configuration from glusterfs mount.
-require_once('/data/moodledata/' . $orvsduser . '/moodle22/' . $orvsdfqdn . '/config.php');
+require_once('/data/moodledata/' . $orvsduser . '/moodle25/' . $orvsdfqdn . '/config.php');
 
 //=========================================================================
 // ALL DONE!  To continue installation, visit your main page with a browser
