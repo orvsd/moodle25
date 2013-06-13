@@ -9,6 +9,7 @@
 #
 # See gitignore(5) man page for more details
 #
+/config.php
 /lib/editor/tinymce/extra/tools/temp/
 *~
 *.swp
@@ -24,3 +25,11 @@ CVS
 /.project
 /.buildpath
 /.cache
+phpunit.xml
+# Composer support - only composer.json is to be in git, the rest is installed in each checkout.
+composer.phar
+composer.lock
+/vendor/
+/behat.yml
+*/yui/build/*/*-coverage.js
+/lib/yuilib/*/build/*/*-coverage.js
