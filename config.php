@@ -21,6 +21,9 @@ $CFG->enablestats = false;
 $CFG->themedesignermode = false;
 $CFG->loglifetime = 365;
 $CFG->gradehistorylifetime = 365;
+$CFG->updateautocheck = false;
+$CFG->updateautodeploy = false;
+$CFG->updatenotifybuilds = false;
 
 // ORVSD variables based on directory structure
 $orvsdcwd = explode("/", getcwd());
