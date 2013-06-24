@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/thelmsapp/db" VERSION="2012032801" COMMENT="XMLDB file for Moodle blocks/thelmsapp"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES> 
+    <TABLE NAME="block_thelmsapp_option" COMMENT="Options (buttons)" NEXT="block_thelmsapp_optiontext">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="position" />
+        <FIELD NAME="position" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="name" NEXT="hidden" />
+        <FIELD NAME="hidden" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="position" NEXT="is_coursebtn" />
+		<FIELD NAME="is_coursebtn" TYPE="int" LENGTH="5" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="hidden" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="block_thelmsapp_optiontext" COMMENT="Options (buttons) text per language" PREVIOUS="block_thelmsapp_option" NEXT="block_thelmsapp_newsletter">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="optionid" />
+        <FIELD NAME="optionid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="lang" />
+        <FIELD NAME="lang" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="optionid" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="lang" NEXT="description" />
+        <FIELD NAME="description" TYPE="text" LENGTH="big" NOTNULL="true" SEQUENCE="false" PREVIOUS="name" NEXT="icon" />
+        <FIELD NAME="icon" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="description" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="block_thelmsapp_newsletter" COMMENT="Newsletter subscriptions" PREVIOUS="block_thelmsapp_optiontext" NEXT="block_thelmsapp_config">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="surname" />
+        <FIELD NAME="surname" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="surname" NEXT="email" />
+        <FIELD NAME="email" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="name" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+	<TABLE NAME="block_thelmsapp_config" COMMENT="Table holding application configuration values" PREVIOUS="block_thelmsapp_newsletter" NEXT="block_thelmsapp_course">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="50" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="value" />
+        <FIELD NAME="value" TYPE="char" LENGTH="50" NOTNULL="true" SEQUENCE="false" PREVIOUS="name" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+	<TABLE NAME="block_thelmsapp_course" COMMENT="Courses" PREVIOUS="block_thelmsapp_config" NEXT="block_thelmsapp_coursetext">
+      <FIELDS>
+      <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="position" />
+        <FIELD NAME="position" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="name" NEXT="categoryparent" />
+		<FIELD NAME="categoryparent" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="position" NEXT="hidden" />
+        <FIELD NAME="hidden" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="categoryparent" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+	<TABLE NAME="block_thelmsapp_coursetext" COMMENT="Courses text per language" PREVIOUS="block_thelmsapp_course" NEXT="block_thelmsapp_coursecat">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="optionid" />
+        <FIELD NAME="optionid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="lang" />
+        <FIELD NAME="lang" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="optionid" NEXT="code" />
+		<FIELD NAME="code" TYPE="char" LENGTH="255" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="lang" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="code" NEXT="description" />
+        <FIELD NAME="description" TYPE="text" LENGTH="big" NOTNULL="true" SEQUENCE="false" PREVIOUS="name" NEXT="price" />
+		<FIELD NAME="price" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="description" NEXT="icon" />
+        <FIELD NAME="icon" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="price" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+	<TABLE NAME="block_thelmsapp_coursecat" COMMENT="Course Categories" PREVIOUS="block_thelmsapp_coursetext" NEXT="block_thelmsapp_coursecattxt">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="50" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="hidden" />
+        <FIELD NAME="hidden" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="name" NEXT="cparent" />
+        <FIELD NAME="cparent" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="hidden" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+	<TABLE NAME="block_thelmsapp_coursecattxt" COMMENT="Course Categories" PREVIOUS="block_thelmsapp_coursecat" NEXT="block_thelmsapp_leads">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="optionid" />
+        <FIELD NAME="optionid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="lang" />
+        <FIELD NAME="lang" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="optionid" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="lang" NEXT="description" />
+        <FIELD NAME="description" TYPE="text" LENGTH="big" NOTNULL="true" SEQUENCE="false" PREVIOUS="name" NEXT="icon" />
+        <FIELD NAME="icon" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="description" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+	<TABLE NAME="block_thelmsapp_leads" COMMENT="Prospective Leads" PREVIOUS="block_thelmsapp_coursecattxt">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="surname" />
+        <FIELD NAME="surname" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="name" />
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="surname" NEXT="email" />
+        <FIELD NAME="email" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="name" NEXT="interestedin" />
+		<FIELD NAME="interestedin" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="email" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

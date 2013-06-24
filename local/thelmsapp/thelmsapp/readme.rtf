@@ -1,0 +1,121 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf370
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;\red52\green52\blue52;\red9\green78\blue192;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid1\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16420\viewh10480\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\b\fs24 \cf0 Copyright 2013 TheLMSapp\
+
+\b0 \
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:\
+\
+http://www.apache.org/licenses/LICENSE-2.0\
+\
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\
+\
+\pard\pardeftab720\sa400
+
+\b \cf0 Installation Requirements\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0
+\b0 \cf2 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}Apache 2.x and above\
+{\listtext	
+\f1 \uc0\u9642 
+\f0 	}PHP 5.x and above\
+{\listtext	
+\f1 \uc0\u9642 
+\f0 	}MySQL 5.x and above\
+{\listtext	
+\f1 \uc0\u9642 
+\f0 	}Moodle 2.2-2.4.\'a0Download Moodle from {\field{\*\fldinst{HYPERLINK "http://download.moodle.org/"}}{\fldrslt \cf3 \ul \ulc3 the moodle website}}\cf3 \ul \ulc3 \
+\pard\tx566\pardeftab720
+\cf2 \ulnone \
+\pard\pardeftab720\sa400
+\cf0 Installation instructions\
+\pard\pardeftab720\sa480
+
+\b \cf2 Step 1 - \cf0 Register\cf2 \
+
+\b0 Be sure that you have {\field{\*\fldinst{HYPERLINK "http://www.thelmsapp.com/registration-form/"}}{\fldrslt \cf3 \ul registered your LMS installation}}. Your registration will be activated within 24h tops and when it does you will receive a welcome email.\
+
+\b Step 2 - \cf0 Download the plugin\
+
+\b0 \cf2 Download the\'a0{\field{\*\fldinst{HYPERLINK "https://github.com/thelmsapp/thelmsapp-plugin-moodle/archive/master.zip"}}{\fldrslt \cf3 \ul plugin}}\'a0and place the zip file inside the blocks directory of your Moodle installation. Unzip it and you should now have the plugin folder expanded.\
+Alternatively you can pull the source directly from\'a0{\field{\*\fldinst{HYPERLINK "http://www.github.com/thelmsapp"}}{\fldrslt \cf3 \ul github}}\'a0by\'a0issuing the following command inside the blocks directory of your moodle installation.{\field{\*\fldinst{HYPERLINK "http://www.thelmsapp.com/assets/github.png"}}{\fldrslt \
+}}\pard\pardeftab720\sa480
+{\field{\*\fldinst{HYPERLINK "https://github.com/thelmsapp/thelmsapp-plugin-moodle.git"}}{\fldrslt \cf3 \ul git clone https://github.com/thelmsapp/thelmsapp-plugin-moodle.git}}\
+\pard\pardeftab720\sa480
+
+\b \cf2 Step 3 - \cf0 Download the theme\
+
+\b0 \cf2 Next step is to download the\'a0accompanying theme. If you have moodle 2.2 or 2.3 download this {\field{\*\fldinst{HYPERLINK "https://github.com/thelmsapp/thelmsapp-theme-moodle-1/archive/master.zip"}}{\fldrslt \cf3 \ul .zip}} (or visit this {\field{\*\fldinst{HYPERLINK "https://github.com/thelmsapp/thelmsapp-theme-moodle-1/archive/master.zip"}}{\fldrslt \cf3 \ul repo}}), if you have moodle 2.4 download this {\field{\*\fldinst{HYPERLINK "https://github.com/thelmsapp/thelmsapp-theme-moodle-2/archive/master.zip"}}{\fldrslt \cf3 \ul .zip}} (or visit this {\field{\*\fldinst{HYPERLINK "https://github.com/thelmsapp/thelmsapp-theme-moodle-2/archive/master.zip"}}{\fldrslt \cf3 \ul repo}}).\'a0\'a0Place the .zip file inside the themes directory of your Moodle installation. Unzip it and you should now have the theme's folder expanded.\
+
+\b Step 4 - \cf0 Set up the plugin\
+
+\b0 \cf2 Login as administrator and navigate to Site Administration->Notifications.\
+If everything is OK, you must see a screen informing you that your Moodle installation has detected the new plugin. Click the button 'Upgrade Moodle database now'.\
+
+\b Step 5 - \cf0 Set up the theme\
+
+\b0 \cf2 Set up a rule so that TheLMSapp uses the theme you installed in Step 2. Go to Site Administration --> Appearance --> Themes --> Theme Settings and go to the end of this page. Under "Device detection regular expressions" option enter for\'a0Regular expression "*thelmsapp_v1*" and in the\'a0Return value field enter "thelmsapp".\
+Click on save changes and go to Site Administration --> Appearance --> Themes -->\'a0Theme selector. Apart from the default options (default, mobile, tablet etc) you will now have a new option called Thelmsapp. Click on change theme and from the new screen navigate to Bootstrap_thelmsapp and click on "Use theme". You have now set the theme to be used by TheLMSapp while you can select any other theme you like for when people are accessing your LMS from a tablet device.\
+
+\b Step 6 - \cf0 Enable the web services in moodle\
+After you see the success message continue with the installation as follows:
+\b0 \cf2 \
+1. Browse from the\'a0
+\b \cf0 Settings Block\'a0
+\b0 \cf2 to
+\b \cf0 \'a0Site Administration -> Advanced features
+\b0 \cf2 . There you must check the option\'a0
+\b \cf0 Enable web services
+\b0 \cf2 .\
+2. Browse from the\'a0
+\b \cf0 Settings Block
+\b0 \cf2 \'a0to
+\b \cf0 \'a0Site Administrator ->Plugin -> Web Services -> Overview
+\b0 \cf2 . In the\'a0
+\b \cf0 Users as clients with token
+\b0 \cf2 \'a0Section you must click in step 1 and step 2 and do the following.\
+3. In step 1 click on the
+\b \cf0 \'a0Enable web services
+\b0 \cf2 \'a0link\'a0and in the next screen you must check the option Enable Web Services and save the changes by clicking the Save Changes button.\
+4. In step 2 click on the\'a0
+\b \cf0 Enable protocols\'a0
+\b0 \cf2 link and in the next screen you must enable the\'a0
+\b \cf0 REST
+\b0 \cf2 \'a0protocol. Then save the changes by clicking the Save Changes button.\
+5. Finally you must browse from the\'a0
+\b \cf0 Settings Block
+\b0 \cf2 \'a0to
+\b \cf0 \'a0Site Administration -> Users -> Permissions -> Define Roles
+\b0 \cf2 . There you must select the\'a0
+\b \cf0 Authenticated user
+\b0 \cf2 \'a0and then click on the Edit Button. From the Capability list you must find the\'a0
+\b \cf0 webservice:createtoken
+\b0 \cf2 \'a0and\'a0
+\b \cf0 webservice:restuse
+\b0 \cf2 \'a0and give them the permission allow, select Save Changes button.\
+
+\b Step 7 - \cf0 Make the plugin's block visible\
+
+\b0 \cf2 Navigate to Navigation-> SiteHome.\
+On the left-hand side of your screen there is a Settings block. Click 'FrontPage Settings' -> 'Turn Editing On'.\
+Scroll at the bottom of the screen and spot the 'Add a block' selectBox. From the dropdown select the option 'TheLMSApp'. Then click 'Turn Editing Off' from the 'Settings' block.\'a0\'a0\
+You should now have TheLMSApp block installed.\
+From this block you can manage the Course Hierarchy (Course Categories and Courses), the Buttons appearing in the frontend, your Leads (potential customers), your Newsletter Subscribers and via Services the parts of the information currently exposed in the mobile front-end.\
+\pard\pardeftab720\sa400
+
+\b \cf0 You are done!
+\b0 \
+\pard\pardeftab720\sa480
+\cf2 If you made it this far congratulations! You have made your LMS installation accessible from TheLMSapp!\
+After you install the plugin please read the {\field{\*\fldinst{HYPERLINK "http://www.thelmsapp.com/thelmsapp-plugin-for-moodle-setup-guide/"}}{\fldrslt \cf3 \ul How-to-setup guide}} in order to learn how you can customize your content for TheLMSapp.\
+Have any questions? Need some help?\'a0Run into any problems? {\field{\*\fldinst{HYPERLINK "https://thelmsapp.zendesk.com/anonymous_requests/new"}}{\fldrslt \cf3 \ul Let us know}}!\uc0\u8232 Need any additional info or just want to say hi?\'a0\'a0{\field{\*\fldinst{HYPERLINK "http://www.thelmsapp.com/contact/"}}{\fldrslt \cf3 \ul Send us a message}}.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b \cf0 Copyright 2013 TheLMSapp}
