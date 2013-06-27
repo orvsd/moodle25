@@ -36,10 +36,14 @@ $CFG->wwwroot   = 'http://' . $orvsdfqdn;
 $CFG->dataroot  = '/data/moodledata/' . $orvsduser . '/moodle25/' . $orvsdfqdn;
 $CFG->directorypermissions = 02770;
 
+// Don't touch gluster for cache or temp
+$CFG->tempdir = '/var/tmp/orvsdplatform/'. $orvsduser . '/moodle25/' . $orvsdfqdn . '/temp';
+$CFG->cachedir = '/var/tmp/orvsdplatform/'. $orvsduser . '/moodle25/' . $orvsdfqdn . '/cache';
+
 // ORVSD ClamAV config
 $CFG->runclamonupload = true;
 $CFG->pathtoclam = '/usr/bin/clamscan';
-$CFG->quarantinedir = $CFG->dataroot . '/temp';
+$CFG->quarantinedir = $CFG->tempdir;
 
 // Include relevant configuration from glusterfs mount.
 require_once('/data/moodledata/' . $orvsduser . '/moodle25/' . $orvsdfqdn . '/config.php');
