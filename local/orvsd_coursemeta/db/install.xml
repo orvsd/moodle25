@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/orvsd_coursemeta/db" VERSION="20130220" COMMENT="XMLDB file for Siteinfo module"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="coursemeta" COMMENT="Stores metadata about installed courses.">
+      <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="courseid"/>
+          <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="shortname"/>
+          <FIELD NAME="shortname" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="courseid" NEXT="serial"/>
+          <FIELD NAME="serial" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="shortname" NEXT="license"/>
+          <FIELD NAME="license" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="serial" NEXT="origin"/>
+          <FIELD NAME="origin" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="license" NEXT="timemodified"/>
+          <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"         UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="origin"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
