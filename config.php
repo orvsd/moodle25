@@ -45,6 +45,9 @@ $CFG->runclamonupload = true;
 $CFG->pathtoclam = '/usr/bin/clamscan';
 $CFG->quarantinedir = $CFG->tempdir;
 
+// YUI slasharguments
+$CFG->yuislasharguments = 0;
+
 // Include relevant configuration from glusterfs mount.
 require_once('/data/moodledata/' . $orvsduser . '/moodle25/' . $orvsdfqdn . '/config.php');
 
