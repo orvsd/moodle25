@@ -1,0 +1,239 @@
+/*
+ * @author    Shaun Daubney
+ * @package   theme_aardvark
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+html,body {
+color:#747474;
+background-color: [[setting:backcolor]];
+background-image: url([[setting:backimage]]);
+background-position: center top;
+background-repeat:[[setting:backposition]];
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-weight:normal;
+}
+
+a {
+    color: #3d3d3d;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: [[setting:menuhovercolor]];
+    text-decoration: none;
+}
+
+#page-site-index h2.headingblock:before {
+    background-color: #29A294;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-family: FontAwesome;
+    font-size: 1.2em;
+    height: 1.3em;
+    margin-right: 0.5em;
+    margin-top: -0.3em;
+    padding-top: 0.2em;
+    text-align: center;
+    width: 1.5em;
+	content:"\f0a1";
+	border-radius: 3px 3px 3px 3px;
+}
+
+#page-header h1 {
+    color: #999999;
+    font-size: 22px;
+    text-transform: uppercase;
+	float:left;
+	margin: -10px 0 5px;
+}
+
+#page-header-date h1 {
+    color: #ccc;
+    font-size: 22px;
+    text-transform: uppercase;
+	float:right;
+	margin: -10px 0 5px;
+}
+
+#page-header-generalalert:before {
+    background-color: #ffce00;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-family: FontAwesome;
+    font-size: 1.2em;
+    height: 1.3em;
+    margin-right: 0.5em;
+    margin-top: -0.3em;
+	margin-left: -0.3em;
+    padding-top: 0.2em;
+    text-align: center;
+    width: 1.5em;
+	content:"\f06a";
+	border-radius: 3px 3px 3px 3px;
+}
+
+#page-header-generalalert {
+    clear:both;
+	background-color: #fff8a7;
+	display: block;
+	color: #3d3d3d;
+    height: 1.1em;
+    padding: 10px;
+	margin-bottom:10px;
+	border-radius: 3px 3px 3px 3px;
+}
+
+#page-header-snowalert:before {
+    background-color: #82cadd;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-family: FontAwesome;
+    font-size: 1.2em;
+    height: 1.3em;
+    margin-right: 0.5em;
+    margin-top: -0.3em;
+	margin-left: -0.3em;
+    padding-top: 0.2em;
+    text-align: center;
+    width: 1.5em;
+	content:"\f069";
+	border-radius: 3px 3px 3px 3px;
+}
+
+#page-header-snowalert {
+    clear:both;
+	background-color: #bfe5ea;
+	display: block;
+	color: #3d3d3d;
+    height: 1.1em;
+    padding: 10px;
+	margin-bottom:10px;
+	border-radius: 3px 3px 3px 3px;
+}
+
+.navbar-inner {
+    background-color: #F4f4f4;
+    background-image: linear-gradient(to bottom, #F4f4f4, #e3e3e3);
+    background-repeat: repeat-x;
+	
+	}
+	
+.navbar .logo {
+    display: block;
+    float: left;
+	max-height: 38px;
+}
+
+.navbar .nav > li > a:hover, .navbar .nav > li > a:focus, .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: [[setting:menuhovercolor]];
+	color: #ffffff;
+	text-shadow: none;
+}
+
+
+.navbar .nav li.dropdown > a:hover .caret, .navbar .nav li.dropdown > a:focus .caret, 
+.navbar .nav li.dropdown.open > .dropdown-toggle .caret, .navbar .nav li.dropdown.active > .dropdown-toggle .caret, .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret  {
+    border-bottom-color: #ffffff;
+    border-top-color: #ffffff;
+}
+
+.dropdown-menu {
+    border-radius: 1px 1px 1px 1px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {
+    background-color: [[setting:menuhovercolor]];
+	background-image:none;
+	text-shadow: none;
+}
+
+
+
+
+.course-content {
+    background-color: #FFFFFF;
+	border: 1px solid #E3E3E3;
+    border-radius: 1px 1px 1px 1px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05);
+	margin-bottom: 20px;
+    min-height: 20px;
+    padding: 8px 0;
+}
+
+.pagelayout-incourse #region-main, .pagelayout-mydashboard  #region-main {
+    background-color: #FFFFFF;
+	border: 1px solid #E3E3E3;
+    border-radius: 1px 1px 1px 1px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05);
+	margin-bottom: 20px;
+    min-height: 20px;
+    padding: 10px;
+}
+
+.course-content ul li.section.main {
+    border-bottom: 2px solid #FAFAFA;
+}
+
+.path-course-view .completionprogress {
+    margin-right: 10px;
+}
+
+.block {
+    background-color: #FFFFFF;
+    border-radius: 1px 1px 1px 1px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.block .header .title h2, .block h3.main {
+	font-weight: normal;
+	text-shadow: none;
+}
+
+.forumpost {
+    background-color: #FFFFFF;
+    border-radius: 1px 1px 1px 1px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.author {
+	font-size:0.8em;
+	color:#999999;
+}
+
+.userpicture {
+    border-radius: 2px 2px 2px 2px;
+}
+
+.headingblock {
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+#page-footer {
+    border: 0;
+}
+
+#footer-left, #footer-middle {
+    color: #999999;
+    font-size: 0.8em;
+    text-align: left;
+}
+
+.footerlinks {
+    color: #e5e5e5;
+    font-size: 0.7em;
+	text-align:left;
+	text-shadow: 1px 1px #FFFFFF;
+}
+
+.footerlinks a {
+    color: #e5e5e5;
+
+}
