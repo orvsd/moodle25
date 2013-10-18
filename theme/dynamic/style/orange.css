@@ -1,0 +1,111 @@
+/********************************************************
+**
+** Theme name: Dynamic
+** Creation Date: 07/06/13
+** Author: 3i Logic Training & Consultancy (PVT.) LTD.
+**
+*********************************************************/
+
+/* Global 
+------------------------*/
+
+body.dynamic-orange {                /* Define margins and background colour/image */
+    background: url([[pix:theme|bgorange]]) top left repeat-x #f4f4f4;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+.dynamic-orange a:link {        /* Defining all link styles*/
+    color: #7c7165;
+}
+
+.dynamic-orange a:visited {        /* Setting all visited link styles */
+    color: #7c7165;
+}
+
+.dynamic-orange a:hover {        /* Setting all rollover link styles */
+    color: #5f564c;
+}
+
+.dynamic-orange a:active {        /* Setting all active link styles */
+    color: #7c7165;
+}
+
+/* Header 
+-----------------------*/
+
+.dynamic-orange #page-header {            /* Set height for header */
+    float: none;
+    padding: 0;
+    margin:0;
+    color: #fff;
+    height: 308px;
+    background: url([[pix:theme|pageheaderbgorange]]) top center no-repeat;
+}
+
+.dynamic-orange #logobox{  /* holder background for logo*/
+    height: 185px;
+    width: 252px;
+    margin: auto;
+    text-align: center;
+    background: url([[pix:theme|lbgv2orange]]) no-repeat;
+    float: left;
+}
+
+.dynamic-orange #colourswitcher p{
+    color: #cb8f47;
+}
+
+/* Custom Menu
+-----------------------*/
+ .dynamic-orange #custommenu .yui3-menu-content ul.first-of-type li{
+    border-right: 1px solid #dbcfc0;
+}
+
+.dynamic-orange #custommenu div.yui3-menu.custom_menu_submenu .yui3-menu-content{
+    background:#cb8f47;
+    border:1px solid #fff;
+    color: #fff;
+}
+
+/* Content
+-----------------------*/
+.dynamic-orange ul.topics li#section-0, ul.weeks li#section-0 {
+    background: #df9a55;
+    border: 1px solid #ccc;
+}
+
+.dynamic-orange .coursebox{
+    padding-left:5px;
+    border-bottom: 1px dashed #f0e7de;
+}
+
+/* Sideblocks
+-----------------------*/
+
+.dynamic-orange #region-pre .block .header,  /*-- right block header   --*/
+.dynamic-orange #region-post .block .header {  /*-- right block header   --*/
+    background: url([[pix:theme|sbheaderbg2orange]]) center no-repeat;
+    padding: 12px 5px 5px;
+    color: #fff;
+}
+
+/* Mini Calendar
+------------------------*/
+
+.dynamic-orange .block .minicalendar td.weekend {    /* setting weekend date colour */
+    color:#cb8f47;
+}
+
+/* Forum
+------------------------*/
+
+.dynamic-orange .forumpost .topic .subject {    /* forum subject section inside topic header */
+    font-weight: bold;
+    font-size: 1.1em;
+    padding-left: 5px;
+    background:  #cb8f47;
+    color: #fff;
+}
+
