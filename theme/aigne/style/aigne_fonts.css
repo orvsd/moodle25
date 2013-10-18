@@ -1,0 +1,34 @@
+/* CSS Document */
+
+@font-face {
+    font-family: 'aigne_eras';
+    font-weight: normal;
+    font-style: normal;
+    src: url($CFG->wwwroot . '/theme/aigne/style/erasn-webfont.eot');
+    src: url($CFG->wwwroot . '/theme/aigne/style/erasn-webfont.eot?#iefix') format('embedded-opentype');
+    src: url($CFG->wwwroot . '/theme/aigne/style/erasn-webfont.woff') format('woff');
+    src: url($CFG->wwwroot . '/theme/aigne/style/erasn-webfont.ttf') format('truetype');
+    src: url($CFG->wwwroot . '/theme/aigne/style/erasn-webfont.svg#eras_bk_btbook') format('svg');
+}
+
+@font-face {
+    font-family: 'aigne_friz';
+    font-weight: normal;
+    font-style: normal;
+    src: url($CFG->wwwroot . '/theme/aigne/style/frzquadn-webfont.eot');
+    src: url($CFG->wwwroot . '/theme/aigne/style/frzquadn-webfont.eot?#iefix') format('embedded-opentype');
+    src: url($CFG->wwwroot . '/theme/aigne/style/frzquadn-webfont.woff') format('woff');
+    src: url($CFG->wwwroot . '/theme/aigne/style/frzquadn-webfont.ttf') format('truetype');
+    src: url($CFG->wwwroot . '/theme/aigne/style/frzquadn-webfont.svg#frizquadrata_btroman') format('svg');
+}
+
+@font-face {
+    font-family: 'aigne_handel';
+    font-weight: normal;
+    font-style: normal;
+    src: url($CFG->wwwroot . '/theme/aigne/style/handgotl-webfont.eot');
+    src: url($CFG->wwwroot . '/theme/aigne/style/handgotl-webfont.eot?#iefix') format('embedded-opentype');
+    src: url($CFG->wwwroot . '/theme/aigne/style/handgotl-webfont.woff') format('woff');
+    src: url($CFG->wwwroot . '/theme/aigne/style/handgotl-webfont.ttf') format('truetype');
+    src: url($CFG->wwwroot . '/theme/aigne/style/handgotl-webfont.svg#handelgotdligregular') format('svg');
+}

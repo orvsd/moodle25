@@ -1,0 +1,203 @@
+/****
+ * Three column floating div layout with 2,1,3 column order
+ * Based on: http://matthewjamestaylor.com/blog/holy-grail-no-quirks-mode.htm
+ * And:  http://matthewjamestaylor.com/blog/ultimate-3-column-holy-grail-pixels.htm
+ *
+ * BODY
+ * #page
+ *   #page-header
+ *   |  #headerlogo
+ *   |  |  .logo
+ *   |  #headeroptions 
+ *   |  |  .headerop
+ *   #navcontainer
+ *   |  #custommenu
+ *   |  #navbar
+ *   |  |  .breadcrumb
+ *   |  |  .navbutton
+ *   |  #course-header
+ *   #page-content
+ *   |  #region-pre
+ *   |  |  .region-content
+ *   |  #region-main
+ *   |  |  .region-content
+ *   |  #region-post
+ *   |  |  .region-content
+ *   #page-footer
+ *   |  #bottom_1
+ *   |  #bottom_2
+ *   |  #standardfooter (bottom_3)
+ *   |  |  .navhelp
+ *   |  |  .contact
+ *   |  |  .credits
+ *   |  #bottom_4
+ *   |  #copyright (bottom_5)
+ * 
+ * DELETED: 
+ * [page-wrapper], page-header-wrapper,  
+ * page-content-wrapper, [region-main-box], region-pre-box, region-post-box, region-main-wrapper, 
+ * footer-wrapper, page-footer-content
+ *   
+ * The body tag may also contain one of three layout specific classes that describe
+ * the regions of the page and allow us to theme more easily.
+ *
+ *   default (no class) = Content + side pre + side post
+ *   side-pre-only      = Content + side pre
+ *   side-post-only     = Content + side post
+ *   content-only       = Content
+ *
+ ****/
+#page {
+    top: 0px;
+    width: 90%;
+    min-width: 775px;    
+    margin: 0px auto 0px auto;
+    padding: 0px 0px 0px 0px;
+    /*background: ;*/
+}
+/*----- HEADER ------*/
+#page-header,
+#headerlogo,
+#headeroptions {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+#page-header {
+    clear: both;
+    width: 100%;
+    height: 53px;
+    padding: 25px 0px 0px 0px;
+    background-color: #FFFFFF;
+}
+#headerlogo {
+    position: absolute;
+    top: 0px;
+    width: 200px;
+    height: 75px;
+    background: url([[setting:backlogo]]) no-repeat center center;
+}
+#headeroptions {
+    position: relative;
+    top: 0px;
+    float: right;
+    width: 78%;
+    height: 50px;
+    font-size: 0.95em;
+    text-align: right;
+}
+/*----- NAVIGATION ------*/
+#navcontainer,
+#custommenu, 
+#navbar, 
+#course-header {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+#navcontainer {
+    clear: both;
+    margin: 0.5% 0px 0.5% 0px; /*<- BODY with BACKGROUND COLOR or IMAGE */
+    /*margin: 0px 0px 0px 0px; /*<- BODY without BACKGROUND COLOR or #FFFFFF color or NO IMAGE */
+}
+#custommenu { /* -> more customizable options in aigne_menu.css */
+    height: 24px;
+    padding: 2px 5px 0px 10px;
+    background-color:[[setting:menucolor]];
+}
+#navbar {
+    height: 24px;
+    padding: 2px 5px 0px 10px;
+    background-color: #CCDDEE;
+}
+#course-header {
+    height: 24px;
+    background-color: #F3F7FF;
+}
+/*----- CONTENT _ 3 Column Page Layout ------*/
+#page-content,
+#region-pre, 
+#region-main, 
+#region-post {
+    position: relative;
+    float: left;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+#page-content {
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+}
+#region-pre {
+    width: 20%;
+}
+#region-main {
+    width: 58%;
+    margin: 0px 0.5% 0px 0.5%;
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    border-color: #322C65;
+}
+#region-main .region-content {
+    padding: 0.5% 5px 5% 10px;
+    background-color: #FFFFFF;
+}
+#region-post {
+    width: 20%;
+}
+/*----- FOOTER ------*/
+#page-footer,
+#bottom_1, 
+#bottom_2, 
+#standardfooter,
+#bottom_4,
+#copyright {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+#page-footer {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0.5% 0px 0px 0px;
+    background-color: #CCDDEE;
+    border-width: 1px 0px 1px 0px;
+    border-style: solid;
+    border-color: #322C65;
+    font-size: 0.95em;
+}
+#bottom_1 {
+}
+#bottom_2 {
+}
+#standardfooter {
+}
+#bottom_4 {
+}
+#copyright {
+    line-height: 3em;
+    text-align: center;
+}
+
+/*----- SIDE-PRE-ONLY ------*/
+.side-pre-only #region-pre {width: 22%;}
+.side-pre-only #region-main {width: 77.5%; margin: 0px 0px 0px 0.5%;}
+.side-pre-only #region-post {width: 0;}
+
+/*----- SIDE-POST-ONLY ------*/
+.side-post-only #region-pre {width: 0;}
+.side-post-only #region-main {width: 77.5%; margin: 0px 0.5% 0px 0px;}
+.side-post-only #region-post {width: 22%;}
+.has_dock.side-post-only #region-main {margin-left: 0;}
+
+/*----- CONTENT ONLY - NO BLOCKS WHATSOEVER ------*/
+.content-only #region-pre {width: 0;}
+.content-only #region-main {width: 100%; margin: 0px 0px 0px 0px;}
+.content-only #region-post {width: 0;}
+
+/*----- Report layout ------*/
+.pagelayout-report #page-content #region-main {overflow: auto;}
+.pagelayout-report #page-content #region-main .region-content {overflow: visible;}
+
+
+
+

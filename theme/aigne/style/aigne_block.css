@@ -1,0 +1,160 @@
+/* ----- Block ----- */
+.block {
+    margin: 0px 0px 2% 0px;
+    padding: 0px 0px 0px 0px;
+    border-width: 0px 0px 0px 0px;
+    border-style: solid;
+    border-color: #322C65;
+    background-color: #FFFFFF;
+}
+.block-region {
+    font-size: 0.95em;    
+    font-style: normal;
+    font-weight: normal;
+}
+.block-region ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.block-region li {
+    padding: 0 0 20px 0;
+}
+.block-region li ul {
+}
+.block-region li li {
+    margin: 0px 20px 0px 10px;
+    padding: 8px 0px;
+}
+.block .region-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.block .content {
+    padding: 0px 10px 10px 10px;
+}
+.block.hidden .content {
+    display: none;
+}
+.block .content .userpicture {
+    width:16px;
+    height:16px;
+    margin-right:4px;
+}
+.block .content .list li.listentry {
+    clear:both;
+}
+.block .content .list .c0 {
+    display:inline;
+}
+.block .content .list .c1 {
+    margin-left:5px;
+    display:inline;
+}
+/* ----- Block Head ----- */
+.block .header {
+    border:none;
+    padding: 0px 0px 0px 0px;
+    width: 100%;
+}
+.block .header div.commands {
+    margin-left: 10px;
+}
+#region-pre .block .header {
+    background-color: #777777;
+    color: #FFFFFF;
+    /*border-width: 0px 0px 0px 0px;
+    border-style: solid;
+    border-color: #000000;*/
+}
+#region-post .block .header {
+    background-color: #007EBA;
+    color: #FFFFFF;
+    /*border-width: 0px 0px 0px 0px;
+    border-style: solid;
+    border-color: #322C65;*/
+}
+.block .header .title h2 {
+    font-size: 1.20em;
+    margin: 1px 0 2px 10px;
+    padding: 0px 0px 0px 0px;
+}
+
+/* ----- Block Head _ Controles de MINIMIZAR ----- */
+.block .header .block_action {
+    margin: 0px 2px 0px 0px;
+    padding: 2px 0px 0px 0px;
+    background-color: transparent;
+}
+/* ----- Block Head _ Controles de DOCK ----- */
+.block .header .block_action input {
+    margin: 0px 2px 0px 0px;
+    padding: 2px 0px 0px 0px;
+    background-color: transparent;
+    border: 0;
+}
+/* ----- Block Foot ----- */
+.block .footer {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+/* ----- other Block's regions ----- */
+.block .blockannotation {
+    font-size:0.75em;
+    margin: -1em 0 1em;
+}
+.block.beingmoved {
+    border-width: 2px;
+    border-style: dashed;
+}
+.blockmovetarget {
+    display: block;
+    height: 1em;
+    margin-bottom: 1em;
+    border-width: 2px;
+    border-style: dashed;
+}
+.block .block-hider-show,
+.block .block-hider-hide {
+    cursor:pointer;
+}
+.block .block-hider-show,
+.block.hidden .block-hider-hide {
+    display:none;
+}
+.block.hidden .block-hider-show {
+    display:inline;
+}
+/** List block contents **/
+.block .list .c0 {
+    display:inline;
+}
+.block .list .c0 img.icon {
+    vertical-align: middle
+}
+.block .list .c1 {
+    margin-left:5px;
+    display:inline;
+}
+/** Bugfixes Smallicon & Navicon **/
+.block_settings .block_tree li.item_with_icon > p img,
+.block_navigation .block_tree li.item_with_icon > p img {
+    left:0;
+    position:absolute;
+    top:0px !important;
+    vertical-align:middle;
+}
+.block_settings .block_tree li.item_with_icon p img.smallicon,
+.block_settings .block_tree li.item_with_icon p img.navicon,
+.block_navigation .block_tree li.item_with_icon p img.smallicon,
+.block_navigation .block_tree li.item_with_icon p img.navicon {
+    margin: 0;
+    padding: 0;
+    vertical-align:middle;
+}
+.block_navigation .block_tree .type_activity > .tree_item.branch img {
+    left:0px;
+    bottom: 0px;
+    position:absolute;
+}

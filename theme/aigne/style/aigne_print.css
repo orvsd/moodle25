@@ -1,0 +1,31 @@
+/*----- ----- ----- ###   CSS to prevent content print   ### ----- ----- -----*/
+#page {
+    display: block;
+}
+#page-header {
+    display: block;   
+}
+#headerlogo {
+    display: block;   
+}
+#navcontainer {
+    display: none;   
+}
+#page-content {
+    display: none;
+}
+#print {
+    display: block;
+}
+#page-footer {
+    display: block;
+    clear: both;
+    margin: 50px 0px 0px 0px;
+    background-color: #FFFFFF;
+    font-size: 0.80em;
+}
+#standardfooter {
+    display: none;
+}
+
+/*----- ----- ----- ###   END OF CSS   ### ----- ----- -----*/
