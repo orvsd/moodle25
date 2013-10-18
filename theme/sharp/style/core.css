@@ -1,0 +1,417 @@
+/* Global
+---------------------------*/
+
+html, body{
+ height:100%;
+}
+
+html{
+  font-size: 100%;
+}
+
+body {
+  min-height:100%;
+  height:auto !important; /* ie6 ignores it */
+  height:100%; /* fix */
+  position: relative;
+  background: #e2e2e2 repeat-x left 150px;
+}
+
+body#page-site-index {
+	background-position:  left 200px;
+}
+
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Sans, FreeSans, Jamrul, Garuda, Kalimati;
+	line-height: 1.5;
+	color: #212120;
+}
+
+a {
+ color:#363636;
+}
+
+a:hover{
+  color:#000000;
+  cursor:pointer;
+  text-decoration: none;
+}
+
+#wrapper {
+	padding:0 100px;
+	min-width: 910px;
+}
+
+
+blockquote {
+	border-left:1px solid #eee;
+	padding-left:15px;
+	color:#666;
+}
+
+.mform fieldset {
+	border-color: #eee;
+}
+
+.mform fieldset legend {
+	color: #444;
+	font-weight: normal;
+	font-size: 1.2em;
+	border: 1px solid #eee;
+	padding: 2px 5px;
+	background: #fff;
+}
+
+img{
+  border: 0;
+}
+
+/* headings */
+#heading {
+    height: 110px;
+    color: white;
+    font-size: 30px;
+	vertical-align:middle;
+	padding-top:20px;
+}
+
+h1{
+  font-size: 250%;
+  margin: .5em 0 .2em;
+  font-weight: bold;
+  letter-spacing:-0.06em;
+}
+
+h2{
+  font-family: "Palatino Linotype", Georgia, "Tahoma", "Century Schoolbook L", Arial, Helvetica;
+  font-size: 160%;
+  font-weight: bold;
+  margin: .2em 0 .2em;
+  letter-spacing: -0.04em;
+}
+
+h3{
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Sans, FreeSans, Jamrul, Garuda, Kalimati;
+  font-size: 150%;
+  font-weight: bold;
+  margin: .2em 0 .2em;
+  letter-spacing:-0.06em;
+}
+
+h4{
+  font-family: Arial Narrow, Arial, Helvetica, Geneva;
+  font-size: 140%;
+  font-weight: bold;
+  margin: .2em 0 .2em;
+}
+
+h5{
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Sans, FreeSans, Jamrul, Garuda, Kalimati;
+  font-size: 115%;
+  font-weight: normal;
+  margin: .2em 0 .2em;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h6{
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Sans, FreeSans, Jamrul, Garuda, Kalimati;
+  font-size: 110%;
+  font-weight: bold;
+  margin: .2em 0 .2em;
+}
+
+#page-site-index #page-wrap1 { 
+	background: transparent url([[pix:theme|header-bg]]) repeat-x left top; 
+}
+
+#page-site-index #page-wrap2 {
+	background: transparent url([[pix:theme|header-center]]) no-repeat center top;
+}
+
+
+#page-wrap1 { 
+	background: transparent url([[pix:theme|header-bg-sm]]) repeat-x left top; 
+}
+
+#page-wrap2 {
+	background: transparent url([[pix:theme|header-center-sm]]) no-repeat center top;
+}
+
+/* Header
+----------------------------*/
+
+
+#page-header {
+	padding: 0;
+}
+
+#page-site-index #region-header {
+	margin-bottom: 55px;
+}
+
+#region-header {
+	margin-bottom: 30px;
+}
+
+.headermain {
+	margin: 0;
+	float: none;
+  font-family: "Trajan Pro", "Lucida Sans Unicode", Arial, Helvetica, Sans, FreeSans, Jamrul, Garuda, Kalimati;
+	float: none;
+	font-size: 3em;
+	line-height: 1;
+	text-shadow: -0.05em -0.05em 0 #000;	
+	color: #fff
+}
+
+#region-header.inside .headermain {
+	font-size: 2.5em;
+}
+
+.tagline {
+    display:block;
+    white-space:nowrap;
+    color:#CCCCCC;
+    text-shadow: -0.1em -0.1em 0 #000;
+	font-size:15px;
+}
+
+.headermenu {
+	color: #fff;
+	float: none;
+	margin:5px 25px 0 0;
+	padding-right:50px;
+}
+
+.headermenu a {
+	color: #a2a3a6;
+}
+
+.headermenu a:hover {
+	color: #fff;
+}
+
+#page-header .logininfo,
+#page-header .langmenu {
+	float: right;
+}
+
+#page-header .logininfo {
+	padding: 2px 5px 0 0;
+}
+
+/* Navbar
+----------------------------*/
+
+.navbar {
+margin-bottom: 1em;
+}
+
+.breadcrumb .sep {
+	padding-left: 5px;
+	font-size: 0.9em;
+}
+
+/* Blocks
+----------------------------*/
+
+#region-post-wrap-1 {
+	background: -webkit-gradient(linear, left top, left bottom, from(#30a1bf), to(#e2e2e2));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#30a1bf', endColorstr='#e2e2e2');
+	background: -moz-linear-gradient(top,  #30a1bf,  #e2e2e2);
+	/*background: #30a1bf no-repeat 0 0;*/
+	border-radius:4px 4px 4px 4px;
+	padding-left:0px;
+	width:246px;
+}
+
+#region-post-wrap-2 {
+	background: -webkit-gradient(linear, left top, left bottom, from(#30a1bf), to(#e2e2e2));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#30a1bf', endColorstr='#e2e2e2');
+	background: -moz-linear-gradient(top,  #30a1bf,  #e2e2e2);
+	/*background: #30a1bf no-repeat 0 0;*/
+	border-radius:4px 4px 4px 4px;
+	padding-right:40px;
+	padding-top: 15px;
+}
+
+.block {
+	border: none;
+}
+
+.block .header {
+	border-bottom: 1px solid #eee;
+	padding: 0;
+}
+
+.block .header h2 {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Sans, FreeSans, Jamrul, Garuda, Kalimati;
+  	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 1.2em;	
+	color: #FFFFFF;
+	margin: 0;
+}
+
+/* Courses 
+----------------------------*/
+
+h2.headingblock {
+	font-weight: normal;
+	color:#289fbd;
+	font-size: 1.5em;
+	border-bottom:1px solid #999999;
+}
+
+.coursebox {
+	border-color: #eee;
+}
+
+.coursebox .info {
+	width: 1%;
+}
+
+.coursebox .info .name {
+	margin-bottom: 0;
+	width: 230px;
+}
+
+.coursebox .info .teachers {
+	font-size: 0.9em;
+	color: #888;
+}
+
+.coursebox .summary {
+	width: 63%;
+}
+
+.course-content .section.main {
+	border-bottom: 1px solid #eee;
+}
+
+.course-content .section.main .content {
+	padding: 5px 5px 10px;
+}
+
+.course-content .weeks .section.main .content {
+	margin-left: 0;
+}
+
+.course-content .weeks .section.main .left {
+	display: none;
+}
+
+.course-content .section.main.current {
+	background:#fffcdc;
+}
+
+.course-content .weeks .section.main h3.weekdates {
+	color: #999;
+}
+
+.course-content .current .left,
+.course-content .current h3.weekdates {
+	color: #2d83d5 !important;
+}
+/* Forum 
+--------------------------*/
+
+.forumpost .topic {
+	background: #fff url([[pix:theme|grad]]) repeat-x 0 100%;
+	border-width: 1px 1px 0;
+	border-color: #eee;
+	padding: 0 10px 0;
+}
+
+.forumpost .subject {
+	font-size: 1.5em;
+  font-family: "Palatino Linotype", Georgia, "Tahoma", "Century Schoolbook L", Arial, Helvetica;	
+}
+
+.forumpost .author {
+	font-size: 0.9em;
+	font-style: italic;	
+}
+
+.forumpost .content {
+	border-width: 0 1px 1px;
+	border-style: solid;
+	border-color: #aaa #eee #eee;
+	padding: 5px 10px 10px;
+}
+
+
+/* Dock
+----------------------*/
+
+#dock {
+	background: #eee;
+	border: none;
+}
+
+#dock .firstdockitem {
+	margin-top: 15px;
+}
+
+#dock .dockeditem {
+	background-color: #fff;
+	border: 1px solid #eee;
+	border-width: 0 1px 1px 0;
+	padding: 3px 0;
+}
+
+#dock .dockeditem .dockedtitle {
+	border: none;
+}
+
+#dock .dockeditem .dockedtitle h2 {
+	margin: 12px 0 12px 7px;
+	color: #666;
+}
+
+#dockeditempanel .dockeditempanel_content {
+	border-color: #eee;
+}
+
+#dockeditempanel .dockeditempanel_hd {
+	border-bottom: none;
+	padding: 3px 5px;
+	background: #eee;
+	text-align: left;
+}
+
+#dockeditempanel .dockeditempanel_hd h2 {
+	color: #333;
+	text-align: right;
+	font-weight: normal;
+	font-size: 0.8em;
+	padding: 0 2px;
+}
+
+#dockeditempanel .dockeditempanel_hd .commands {
+	float: right;
+}
+
+.pagelayout-redirect {background-position:0 0;}
+/* button Enter */
+.gettheselogs { background-color:#289fbd; width:65px; color:#FFFFFF; padding:5px 5px 5px 5px; font-family:"Times New Roman"; font-weight:bold;
+}
+.gettheselogs:hover { background-color:#2588B8; width:65px; color:#FFFFFF; padding:5px 5px 5px 5px; font-family:"Times New Roman"; font-weight:bold;cursor:pointer;}
+.loginbtn
+{	
+	color: #289FBD;
+    font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Helvetica,Sans,FreeSans,Jamrul,Garuda,Kalimati;
+    line-height: 1.5;
+	}
+.loginbtn:hover
+{	
+	color:#FFFFFF;
+	background-color:#1A1A1A;
+	cursor:pointer;
+    font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Helvetica,Sans,FreeSans,Jamrul,Garuda,Kalimati;
+    line-height: 1.5;
+	}
+.minicalendar {
+    border-collapse: collapse;
+	}

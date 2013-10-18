@@ -1,0 +1,215 @@
+/** Path: theme pagelayout **/
+
+/*********************************************************************************************
+
+	right column: 28%
+	padding left/right column: 10px
+	padding center column: 20px
+
+**********************************************************************************************/
+
+body {
+	margin: auto 0px;
+	width: 100%;
+}
+
+#page {
+	width: 100%;
+	overflow: hidden;
+}
+
+#page-header {
+	float: left;
+	width: 100%;
+}
+
+#page-content {
+	clear: both;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+#page-content #region-main-box {
+	float: left;
+	right: 28%;
+	position: relative;
+	width: 100%;
+}
+
+#page-content #region-post-box {
+	float: left;
+	right: 72%;
+	position: relative;
+	width: 100%;
+}
+
+#page-content #region-main {
+	float: left;
+	overflow: hidden;
+	position: relative;
+	margin-right: 0px;
+	left: 100%;
+	width: 72%;
+}
+
+#page-content #region-post {
+	float: left;
+	overflow: hidden;
+	position: relative;
+	left: 100%;
+	width: 28%;
+}
+
+#page-content #region-main .region-content {
+	padding: 25px 20px 20px;
+}
+
+#page-content #region-post .region-content {
+	overflow: hidden;
+	padding: 0 0 0 10px;
+}
+
+#page-footer {
+	clear: both;
+	float: left;
+	width: 100%;
+}
+
+/** No blocks whatsoever **/
+
+.content-only #page-content #region-main-box {
+	right: 0%;
+}
+
+.content-only #page-content #region-post-box {
+	right: 100%;
+}
+
+.content-only #page-content #region-main {
+	left: 100%;
+	width: 100%;
+}
+
+.content-only #page-content #region-pre {
+	width: 0%;
+}
+
+.content-only #page-content #region-post {
+	width: 0%;
+}
+
+.pagelayout-report #page-content #region-main {overflow:auto;}
+.pagelayout-report #page-content #region-main .region-content {overflow:visible;}
+
+/* editing */
+.path-user .description {
+	padding-bottom: 0px;
+	/*border-bottom: 1px solid #eee;*/
+}
+.userprofile .list {
+	margin-top: 0px;
+}
+.userprofile .list td {
+	padding-top:0px;
+	padding-bottom:8px;
+}
+.userprofile .list .c0 {
+	padding-left: 0;
+	color:#289fbd;
+	/*font-weight: bold;*/
+}
+.descriptionbox {
+	margin-left: 110px;
+	/*border: 1px solid #ddd;*/
+	padding: 0px;
+}
+.generalbox {
+	border-color: #e2e2e2;
+}
+.profilepicture {
+border:#333333 solid 3px;
+border-radius:4px 4px 4px 4px;
+	float: left;
+	margin-right: 10px;
+}
+
+/* canvas/course.css */
+.info {
+color:#289fbd;}
+#page-course-category .generalbox {
+	margin: 25px auto 30px;
+	width: 100%;
+	padding: 10px;
+	background:#e2e2e2;
+}
+
+/* canvas/mods.css */
+#intro {
+	border-color:#e2e2e2;
+	margin: 2% 10%;
+	padding: 10px;
+}
+
+
+/* base/users.css */
+.userprofile .description {margin-bottom:0px;}
+
+/* base/core.css */
+
+.unlist,
+.unlist li,
+.inline-list,
+.inline-list li,
+.block .list,
+.block .list li,
+.sitetopic .section li,
+.course-content .section li.activity,
+.tabtree li
+ {list-style: none;margin:0;padding:0; width:100%;}
+.no-overflow
+ { padding-bottom:1px;}
+.boxwidthwide {width: 90%;}
+.reportlink {text-align:right; padding:0px 30px 0px 0px;}
+
+/* base/course.css */
+
+.categorylist .category .numberofcourse {font-style: italic; font-size: 0.85em; font-style: normal; color:#289fbd}
+.coursebox .teachers li {list-style-type:none;padding:0;margin:0; width:222px;}
+
+
+/* grade/report/grader/style.css */
+table#user-grades {
+font-size:10px;
+width:95%;
+background-color:transparent;
+border-style:solid;
+border-width:1px;
+margin:20px 0 0;
+}
+table#user-grades th.category {
+vertical-align:top;
+border-style:solid;
+border-width:1px 1px 0;
+font-size:18px;
+padding:5px 5px 5px 5px;
+color:#289fbd;
+}
+table#user-grades th.item ,
+table#user-grades th.categoryitem ,
+table#user-grades th.courseitem {
+border-bottom-color:#000;
+vertical-align:top;
+border-style:solid;
+border-width:1px;
+width:100px;
+text-align:center;
+}
+table#user-grades th.user {
+text-align:left;
+border-style:solid;
+border-width:0 0 1px;
+width:200px;}
+
+/* end editing */
