@@ -1,0 +1,219 @@
+.headingblock {
+    font-size:130%;  padding: 5px; color: #333;
+}
+
+#notice {
+    padding:1em;
+}
+
+label {
+    margin-right:0.3em;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: auto;
+    padding: 2px 0 2px 0;
+    margin: 0.3em;
+}
+
+.navbutton input[type="text"] {
+    width: auto;
+    padding: 0;
+    margin: 0 0.3em 0 0;
+}
+
+/* Login
+------------------------*/
+
+.loginbox {
+    margin: 71px 25%;
+}
+
+.loginbox .loginerrors {
+    color: #f00;
+}
+
+.loginbox .loginform {
+    margin: 0px auto 0;
+    width: 60%;
+}
+
+.loginbox .loginform .form-label {
+    float: left;
+   width:auto!important;
+    margin: 0 auto;
+    text-align: right;
+}
+
+#page-admin-index .adminwarning.maturityinfo.maturity50,
+#page-admin-index .adminwarning.maturityinfo.maturity100,
+#page-admin-index .adminwarning.maturityinfo.maturity150 {
+    background-color: #C2E3C2;
+}
+
+.dir-rtl .loginbox .loginform .form-label {
+    float: none;
+    width: 100%;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.loginbox .loginform .form-input {
+    float: right;
+  /*  width: 59%;
+    margin: 0 auto;*/
+}
+
+.loginbox .loginform .form-input{ width:101% !important; }
+
+.loginbox .loginform .form-input #username,
+.loginbox .loginform .form-input #password {
+    width: 100%;
+    color: #000;
+}
+
+.loginbox .loginform .form-input #loginbtn {
+    margin: 0.5em auto;
+}
+
+.loginbox .forgetpass {
+    margin: 1em 0 0;
+    font-size:95%;
+}
+
+.loginbox.twocolumns {
+    width:90%;
+    margin-left: 5%;
+}
+
+.loginbox .guestsub {
+    border-top: 1px solid #DDDDDD;
+    margin: 5px 20%
+}
+
+.loginbox.twocolumns .loginpanel {
+    border-color: #ddd;
+    padding-right: 0.5%;
+    padding-bottom: 0 !important;
+}
+.loginbox .loginpanel{/*background-image:url([[pix:theme|monitor]]); min-height:392px; background-repeat:no-repeat; background-position: center top;*/  background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
+    border-radius: 8px 8px 8px 8px; -webkit-box-shadow: 1px 1px 15px 0px rgba(0, 0, 0, 0.2);
+box-shadow: 1px 1px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.loginbox .loginsub{  width:100%; margin:auto; padding:0;}
+
+.loginbox.twocolumns .signuppanel {
+    padding-left: 1%;
+    width: 48%;
+}
+
+#page-course-loginas #notice {
+    border: none;
+}
+
+#page-login-forgot_password .generalbox {
+    margin: 0 auto 1.5em;
+    width: 75%;
+    padding: 10px;
+}
+
+#page-login-signup .mform {
+    width: 85%;
+    margin: 0 auto;
+}
+
+#page-login-signup .mform .fitem .fitemtitle {
+    width: 20%;
+}
+
+#page-login-signup .mform .fitem .felement {
+    margin-left: 21%;
+}
+
+/* Admin management
+-----------------------*/
+.plugincompattable {
+    font-size: 100%;
+    text-align: left;
+}
+
+/* Forms
+-----------------------*/
+
+.form-description {
+    font-size:95%;
+}
+
+/* do not push the field far from the label more than all the other mform elements */
+.mform .fitem input[type="text"],
+.mform .fitem input[type="password"] {
+    margin: 0.3em 0 0.3em 0;
+}
+
+/* needed to vertically align label of mform groups containing, for instance, select and text */
+.mform .fitem {
+    line-height:2.0em;
+    margin-top:0;
+}
+
+/* Redirect
+-----------------------*/
+.pagelayout-redirect #content {margin-bottom:10%;}
+
+/* Plugin compattable
+-----------------------*/
+.plugincompattable {font-size:90%;}
+
+
+/* login box css */
+
+.login_box{ width:436px;  margin:auto; background-color:#fff; min-height:290px; top: 20px; position: relative; -webkit-box-shadow: 1px 3px 12px 1px rgba(0, 0, 0, 0.2); box-shadow: 1px 3px 12px 1px rgba(0, 0, 0, 0.2);  background-image:url([[pix:theme|login_bg]]);
+  background-position: 266px 184px;
+  background-repeat:no-repeat;
+  }
+.login_title{width:98%; float:left; background-image:url([[pix:theme|title_bg]]); background-repeat:repeat-x;  height:33px; color:#fff; line-height:33px; font-size:15px; text-transform:uppercase; padding:0 0 0 10px; font-weight:bold;}
+.username{float:left; margin:13px 0 0 0px; width:330px; position:relative; width:100% !important;}
+.username input{width:95% !important; float:left; border:1px solid #ccc; border-radius:3px; padding:0 0 0 11px; background-image:url([[pix:theme|input_bg]]); background-repeat:repeat-x; height:33px; line-height:33px; color:#949494;}
+.username span{ right:10px; top:16px; z-index:10; position:absolute; background-image:url([[pix:theme|user_icon]]); background-repeat:no-repeat;   height:13px; width:13px;}
+.password{float:left; margin:8px 0 0 0px; width:330px; position:relative; width:100% !important; }
+.password input{width:95% !important; float:left; outline:0px solid #fff; padding:0 0 0 11px; border-radius:3px; border:1px solid #ccc; background-image:url([[pix:theme|input_bg]]); background-repeat:repeat-x; height:33px; line-height:33px; color:#949494;}
+.password span{right:10px; top:16px; z-index:10; position:absolute; background-image:url([[pix:theme|pass_icon]]); background-repeat:no-repeat; height:13px; width:12px;}
+.remember_forgot{float:left; margin:12px 0 0 6px; font-size:11px !important;}
+.remember_forgot input[type="checkbox"]{ float:left; margin:0 10px 0 0; cursor:pointer; /*background: #fff url(../images/chkbox_bg.jpg) left top no-repeat; height:15px;*/ border:0px solid #fff; outline:0px solid #fff;}
+.remember_forgot span{ color:#ff9f00; float:left; margin:0 10px 0 0;}
+.remember_forgot a{ color:#666 !important; float:left; margin:0 10px 0 9px;}
+.login_btn{float:right !important; text-align:right !important; margin: 12px 0px 0 6px; width:auto !important;}
+.login_btn input{ color:#fff; font-weight:bold; float:left; background-image:url([[pix:theme|btn_bg]]); background-repeat:repeat-x;  border-radius:3px; cursor:pointer; padding: 8px 24px 10px 24px; border:0px solid #fff; background-color:#fff !important;}
+
+/* login box css */
+
+
+.coursebox .info {
+    /*background: none repeat scroll 0 0 #CCCCCC; */
+    background-image:url([[pix:theme|bredcrum_bg]]);
+    border-radius: 4px 4px 0px 0px;
+	background-position: left top;
+	background-repeat:repeat-x;
+	background-color:#f0f0f0;
+    float: left;
+    padding: 0.5% 0.5% 0.2% 1%;
+    text-align: left;
+    width: 98.5% ;
+}
+.coursebox .summary {
+    float: left;
+    text-align: left;
+    width: 98%;
+    padding: 3px;
+}
+#custommenu .yui3-menuitem-active {
+    background-color: #FFFFFF !important;
+}
+
+.loginbox .loginform {
+    text-align: center !important;
+}

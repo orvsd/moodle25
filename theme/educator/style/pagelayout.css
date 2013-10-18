@@ -1,0 +1,162 @@
+/************************************************************************
+    questo file sovrascrive parzialmente
+    il corrispondente foglio di stile nel tema "base"
+    Lo ho ottenuto
+    - duplicando l'originale
+    - modificando quanto necessario
+    - cancellando quanto conservato dell'originale
+************************************************************************/
+
+/****
+ * Three column floating div layout with 2,1,3 column order
+ * Based on: http://matthewjamestaylor.com/blog/holy-grail-no-quirks-mode.htm
+ * And:  http://matthewjamestaylor.com/blog/ultimate-3-column-holy-grail-pixels.htm
+ *
+ * #page
+ *   #page-header
+ *   #page-content
+ *   |  #region-main-box
+ *   |    #region-post-box
+ *   |      #region-main-wrap
+ *   |      |  #region-main
+ *   |      |    .region-content
+ *   |      #region-pre
+ *   |      |  .region-content
+ *   |      #region-post
+ *   |      |  .region-content
+ *   #page-footer
+ *
+ * The body tag may also contain one of three layout specific classes that describe
+ * the regions of the page and allow us to theme more easily.
+ *
+ *   default (no class) = Content + side pre + side post
+ *   side-pre-only      = Content + side pre
+ *   side-post-only     = Content + side post
+ *   content-only       = Content
+ *
+ ****/
+
+#page {
+    font-size: 100%;
+	margin:auto;
+	width:[[setting:pagewidth]]!important;
+}
+
+#page-header {
+   /* background-color:#a4ca8d[[setting:headerbgc]]*/;
+    /* arrotonadamento angoli in alto dell'header */
+  /*  -moz-border-radius:6px 6px 0px 0px;     Firefox */
+  /*  -webkit-border-radius:6px 6px 0px 0px;  Safari, Chrome */
+   /* border-radius:6px 6px 0px 0px;          CSS3 */
+  /* border-bottom:2px solid #577146;*/
+ /* background-image:url([[pix:theme|header_bg]]);
+  background-position: left top;
+  background-repeat:repeat;*/
+  /*min-height: 84px;*/
+/* background-color:[[setting:headerbgctop]];*/
+  
+   /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from([[setting:headerbgctop]]), to([[setting:headerbggbottom]]));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, [[setting:headerbgctop]], [[setting:headerbggbottom]]);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, [[setting:headerbgctop]], [[setting:headerbggbottom]]);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, [[setting:headerbgctop]], [[setting:headerbggbottom]]);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, [[setting:headerbgctop]], [[setting:headerbggbottom]]);
+  background: linear-gradient(linear, 0% 0%, 0% 100%, from([[setting:headerbgctop]]), to([[setting:headerbggbottom]])); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='[[setting:headerbgctop]]', endColorstr='[[setting:headerbggbottom]]',GradientType=0 ); /
+  
+
+}
+#page-content {
+    /* arrotonadamento angolo in basso a sx */
+    /* -moz-border-radius:0px 0px 0px 6px;    /* Firefox */
+    /* -webkit-border-radius:0px 0px 0px 6px; /* Safari, Chrome */
+    /* border-radius:0px 0px 0px 6px;         /* CSS3 */
+    /*background-color:[[setting:lblockcolumnbgc]];*/ /* colore della colonna di sinistra */
+    float:none;
+}
+
+#page-content #region-main-box {
+    left:[[setting:blockcolumnwidth]];
+  /* background-color:#FFF;*/
+}
+
+#page-content #region-post-box {
+    margin-left:[[calculated:minusdoubleblockcolumnwidth]];
+    /* arrotonadamento angolo in basso a dx */
+    /* -moz-border-radius:0px 0px 6px 0px;    /* Firefox */	
+    /* -webkit-border-radius:0px 0px 6px 0px; /* Safari, Chrome */
+    /* border-radius:0px 0px 6px 0px;         /* CSS3 */
+   /* background-color:[[setting:rblockcolumnbgc]];  colore della colonna di destra */
+}
+
+#page-content #region-main {
+    margin-left:[[calculated:doubleblockcolumnwidth]];
+   /* background-color:white;*/ /* questo serve a togliere la curvatura dagli angoli della zona centrale */
+}
+
+#page-content #region-pre {
+    left:[[setting:blockcolumnwidth]]; /*400-[[setting:blockcolumnwidth]]*/
+    width:[[setting:blockcolumnwidth]];
+   /* background-color:[[setting:lblockcolumnbgc]]; colore della colonna di sx */
+}
+
+#page-content #region-post {
+    width:[[setting:blockcolumnwidth]];
+    /* arrotonadamento angolo in basso a dx */
+    /* -moz-border-radius:0px 0px 6px 0px;    /* Firefox */
+    /* -webkit-border-radius:0px 0px 6px 0px; /* Safari, Chrome */
+    /* border-radius:0px 0px 6px 0px;         /* CSS3 */
+    /* background-color:[[setting:rblockcolumnbgc]]; colore del fondo della parte occupata dai contenuti della colonna centrale e della colonna dx */
+}
+
+#page-content .region-content {
+    padding:[[setting:blockpadding]] [[setting:blockpadding]] 0 [[setting:blockpadding]];
+	
+}
+#region-main .region-content {
+   
+	 background-image:url([[pix:theme|content_bg]]);
+  background-position: left top;
+  background-repeat:repeat-x;
+  min-height:214px;
+   margin: 9px 0 0;
+    border-radius: 8px 8px 8px 8px;
+	border:1px solid #e2e2e2;
+	background-color:#fff;
+}
+
+#maincontent {
+    margin-top:0;
+}
+
+.pagelayout-report #page-content .region-content {
+    overflow: auto;
+}
+
+/** Only side pre **/
+    .side-pre-only #page-content #region-post-box {margin-left:-[[setting:blockcolumnwidth]];}
+    .side-pre-only #page-content #region-main {margin-left:[[setting:blockcolumnwidth]];}
+
+/** Only side post **/
+    .side-post-only #page-content #region-post-box {margin-left:-[[setting:blockcolumnwidth]];}
+    .side-post-only #page-content #region-main {margin-left:[[setting:blockcolumnwidth]];}
+    .has_dock.side-post-only .page-middle #region-main {margin-left:[[setting:blockcolumnwidth]];}
+
+/** Report layout **/
+    .pagelayout-report #report-main-content .region-content {background-color:white;margin-left:[[setting:blockcolumnwidth]];}
+    .pagelayout-report #report-region-pre {width:[[setting:blockcolumnwidth]];}
+
+/** Correct for right to left languages **/
+    .dir-rtl.pagelayout-report #report-main-content .region-content {margin-left:0;margin-right:[[setting:blockcolumnwidth]];}
+
+/** Stabalise IE6 behaviour on the report layout **/
+/* aggiunti/sovrascritti da me */
+    .ie6.pagelayout-report #report-region-wrap {float:none;width:[[setting:blockcolumnwidth]];left:auto;position:absolute;top:0;}
