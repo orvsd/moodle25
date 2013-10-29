@@ -24,4 +24,4 @@
  */
 
 $string['oauth:addinstance'] = 'Add a new oauth login block';
-$string['pluginname'] = 'Login';
+$string['pluginname'] = 'OAuth Login Block';
