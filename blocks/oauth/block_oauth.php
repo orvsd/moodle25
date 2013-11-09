@@ -2,7 +2,7 @@
 
 class block_oauth extends block_base {
     function init() {
-        $this->title = 'Login';
+        $this->title = 'Login ';
     }
 
     function applicable_formats() {
