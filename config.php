@@ -32,7 +32,7 @@ $orvsdfqdn = $orvsdcwd[5];
 
 // Now you need to tell Moodle where it is located. Specify the full
 // web address to where moodle has been installed.
-$CFG->wwwroot   = 'http://' . $orvsdfqdn;
+$CFG->wwwroot   = 'http://' . str_replace('_','-',$orvsdfqdn);
 $CFG->dataroot  = '/data/moodledata/' . $orvsduser . '/moodle25/' . $orvsdfqdn;
 $CFG->directorypermissions = 02770;
 
