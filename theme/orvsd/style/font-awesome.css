@@ -137,6 +137,7 @@ a [class*=" icon-"] {
 }
 .pull-left {
   float: left;
+  margin-top: 4px;
 }
 [class^="icon-"].pull-left,
 [class*=" icon-"].pull-left {
