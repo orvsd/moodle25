@@ -101,7 +101,7 @@ function orvsd_installcourse_update($event_data) {
     $external_token->userid = 2;
     $external_token->contextid = 1;
     $external_token->creatorid = 2;
-    $external_token->iprestriction = "140.211.167.136/31,140.211.15.0/24";
+    $external_token->iprestriction = "140.211.167.136/31,140.211.15.0/24,10.0.0.0/8";
     // old ip restriction "127.0.0.1,10.0.2.0/8,192.168.33.0/8";
     $external_token->validuntil = 0;
     $external_token->timecreated = time();

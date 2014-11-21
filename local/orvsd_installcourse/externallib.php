@@ -46,6 +46,8 @@ class local_orvsd_installcourse_external extends external_api {
       $email, $pass) {
 
     global $CFG, $USER, $DB;
+    // Include the coursecat methods for creating the category
+    require_once($CFG->libdir.'/coursecatlib.php');
     $status = true;
 
     $serial = $courseid;
@@ -81,6 +83,18 @@ class local_orvsd_installcourse_external extends external_api {
     if (!has_capability('moodle/restore:restorecourse', $context)) {
       throw new moodle_exception('cannotrestorecourse');
     }
+
+    // Create course category if it does not exist
+    $coursecat_record = $DB->get_record('course_categories', array('name' => $params['category']));
+    if (!$coursecat_record) {
+        $created = coursecat::create(array('name' => $params['category']));
+        $ccat_id = $created->id;
+    } else {
+        $ccat_id = $coursecat_record->id;
+    }
+
+    // Change from the name to the ID of the course category
+    $param_array['category'] = $ccat_id;
 
     //Restore the course file into this site
     $courseid = local_orvsd_installcourse_external::restore_course($param_array);
@@ -150,10 +164,9 @@ class local_orvsd_installcourse_external extends external_api {
     // extract the given backup file to a temp dir
     $backup_unique_code = time();
 
-    $backup_file = $course_array['filepath'] . $course_array['file'];
+    $backup_file = $course_array['filepath'] . '/' . $course_array['file'];
 
     $tempdir = $CFG->tempdir. "/backup/" . $backup_unique_code;
-
 
     try {
       $fb = get_file_packer();
@@ -178,12 +191,13 @@ class local_orvsd_installcourse_external extends external_api {
     * int $target backup::TARGET_[ NEW_COURSE | CURRENT_ADDING |
     * CURRENT_DELETING | EXISTING_ADDING | EXISTING_DELETING ]*/
     $rc = new restore_controller(
-                      $backup_unique_code,
-                      $newcourseid,
-                      backup::INTERACTIVE_NO,
-                      backup::MODE_SAMESITE,
-                      $USER->id,
-                      backup::TARGET_NEW_COURSE);
+                $backup_unique_code,
+                $newcourseid,
+                backup::INTERACTIVE_NO,
+                backup::MODE_SAMESITE,
+                $USER->id,
+                backup::TARGET_NEW_COURSE);
+
     $rc->execute_precheck();
     $rc->execute_plan();
 
@@ -275,7 +289,7 @@ class local_orvsd_installcourse_external extends external_api {
 
     //get enrolment instance (manual and student)
     $instances = enrol_get_instances($courseid, false);
-    $enrolment = stdClass();
+    $enrolment = new stdClass();
     foreach ($instances as $instance) {
       if ($instance->enrol === 'manual') {
         $enrolment = $instance;
