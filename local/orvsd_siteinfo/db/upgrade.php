@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * siteinfo plugin install script
+ * siteinfo plugin function library
  *
  * @package    local
- * @subpackage iorvsd_siteinfo
+ * @subpackage orvsd_siteinfo
  * @copyright  2013 OSU Open Source Lab (http://osuosl.org)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,13 +26,16 @@
 defined('MOODLE_INTERNAL') || die;
 
 function xmldb_local_orvsd_siteinfo_upgrade($oldversion = 0) {
-    global $CFG;
+    global $CFG, $DB;
+
+    try {
+        $DB->delete_records('siteinfo');
+    } catch (Exception $e) {
+        // Do nothing, continue with the upgrade
+    }
 
     require_once("$CFG->dirroot/local/orvsd_siteinfo/lib.php");
+    orvsd_siteinfo_generate_token();
 
-    orvsd_siteinfo_update_db();
     return true;
 }
-
-
-
