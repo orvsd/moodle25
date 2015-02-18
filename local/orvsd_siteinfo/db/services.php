@@ -1,6 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
-//
+
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -15,7 +14,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * siteinfo module capability definition
+ * Web service local plugin template external functions and service definitions.
  *
  * @package    local
  * @subpackage orvsd_siteinfo
@@ -23,14 +22,23 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+// we defined the webservice functions to install
+$functions = array(
+	'local_orvsd_siteinfo_siteinfo' => array(
+		'classname'   => 'local_orvsd_siteinfo_external',
+		'methodname'  => 'siteinfo',
+		'classpath'   => 'local/orvsd_siteinfo/externallib.php',
+		'description' => 'Given a number of days (e.g., 7) gives the site info from that far back until the present',
+		'type'	      => 'write',
+	),
+);
 
-$capabilities = array(
-    'mod/orvsd_siteinfo:view' => array(
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-            'manager' => CAP_ALLOW
-        )
-    )
+// We define the services to install as pre-build services. A pre-build service is not editable by administrator.
+$services = array(
+	'Site Info' => array(
+		'shortname' => 'orvsd_siteinfo',
+		'functions' => array ('local_orvsd_siteinfo_siteinfo'),
+		'restrictedusers' => 0,
+		'enabled'=>1,
+	),
 );
