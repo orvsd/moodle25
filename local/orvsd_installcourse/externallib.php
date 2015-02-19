@@ -46,8 +46,6 @@ class local_orvsd_installcourse_external extends external_api {
       $email, $pass) {
 
     global $CFG, $USER, $DB;
-    // Include the coursecat methods for creating the category
-    require_once($CFG->libdir.'/coursecatlib.php');
     $status = true;
 
     $serial = $courseid;
@@ -84,13 +82,22 @@ class local_orvsd_installcourse_external extends external_api {
       throw new moodle_exception('cannotrestorecourse');
     }
 
-    // Create course category if it does not exist
-    $coursecat_record = $DB->get_record('course_categories', array('name' => $params['category']));
-    if (!$coursecat_record) {
-        $created = coursecat::create(array('name' => $params['category']));
-        $ccat_id = $created->id;
+    if (file_exists($CFG->libdir.'/coursecatlib.php')) {
+        // Include the coursecat methods for creating the category
+        require_once($CFG->libdir.'/coursecatlib.php');
+
+        // Create course category if it does not exist
+        $coursecat_record = $DB->get_record('course_categories', array('name' => $params['category']));
+        if (!$coursecat_record) {
+            $created = coursecat::create(array('name' => $params['category']));
+            $ccat_id = $created->id;
+        } else {
+            $ccat_id = $coursecat_record->id;
+        }
     } else {
-        $ccat_id = $coursecat_record->id;
+        $coursecat = new stdClass();
+        $coursecat->name = $params['category'];
+        $ccat_id = $DB->insert_record('course_categories', $coursecat);
     }
 
     // Change from the name to the ID of the course category

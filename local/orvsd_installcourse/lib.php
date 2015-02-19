@@ -83,11 +83,12 @@ function orvsd_installcourse_update($event_data) {
         }
     }
 
+
     // Look up the service, if it doesn't exist, create it
-    $service = $DB->get_record('external_services', array('component'=>'local_orvsd_installcourse'));
+    $service_id = $DB->get_field('external_services',
+      'id', array('component'=>'local_orvsd'), IGNORE_MISSING);
 
-    if (!$service) {
-
+    if (!$service_id) {
         $tmp = $DB->get_records_sql('SHOW TABLE STATUS WHERE name = "mdl_external_services"');
         $service_id = $tmp['mdl_external_services']->auto_increment;
 
@@ -95,32 +96,29 @@ function orvsd_installcourse_update($event_data) {
         $service->id = $service_id;
     }
 
+
     // Get the admin account
-    $admin = $DB->get_record_sql(
+    $admin_id = $DB->get_record_sql(
         "SELECT value FROM `mdl_config` WHERE `name` LIKE 'siteadmins'",
         null,
         IGNORE_MISSING
     );
 
-    $admin_user = $DB->get_record('user', array('id' => "$admin->value"));
-    $existing_tokens = $DB->get_record('external_tokens', array('userid'=>"$admin_user->id", 'externalserviceid'=>"$service->id"));
+    require('config.php');
+    require_once("$CFG->libdir/externallib.php");
 
-    if (!$existing_tokens) {
-        require('config.php');
-        require_once("$CFG->libdir/externallib.php");
+    // Generate a new token for the Admin User
+    $token = external_generate_token(
+        EXTERNAL_TOKEN_PERMANENT,
+        $service,
+        $admin_id->value,
+        context_user::instance($admin_id->value),
+        $validuntil=0,
+        $IP_RESTRICTION
+    );
 
-        // Generate a new token for the Admin User
-        $token = external_generate_token(
-            EXTERNAL_TOKEN_PERMANENT,
-            $service,
-            $admin->value,
-            context_system::instance(),
-            $validuntil=0,
-            $IP_RESTRICTION
-        );
-
-        $DB->set_field('external_tokens', 'creatorid', "$admin->value", array("token"=>"$token"));
-    }
+    error_log("token = $token");
+    echo("token = $token");
 
     return true;
 }
