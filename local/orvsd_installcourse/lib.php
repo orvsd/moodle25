@@ -95,14 +95,7 @@ function orvsd_installcourse_update($event_data) {
         $service->id = $service_id;
     }
 
-    // Get the admin account
-    $admin = $DB->get_record_sql(
-        "SELECT value FROM `mdl_config` WHERE `name` LIKE 'siteadmins'",
-        null,
-        IGNORE_MISSING
-    );
-
-    $admin_user = $DB->get_record('user', array('id' => "$admin->value"));
+    $admin_user = $DB->get_record('user', array('username' => "admin"));
     $existing_tokens = $DB->get_record('external_tokens', array('userid'=>"$admin_user->id", 'externalserviceid'=>"$service->id"));
 
     if (!$existing_tokens) {
@@ -113,13 +106,13 @@ function orvsd_installcourse_update($event_data) {
         $token = external_generate_token(
             EXTERNAL_TOKEN_PERMANENT,
             $service,
-            $admin->value,
+            $admin_user->id,
             context_system::instance(),
             $validuntil=0,
             $IP_RESTRICTION
         );
 
-        $DB->set_field('external_tokens', 'creatorid', "$admin->value", array("token"=>"$token"));
+        $DB->set_field('external_tokens', 'creatorid', $admin_user->id, array("token"=>"$token"));
     }
 
     return true;

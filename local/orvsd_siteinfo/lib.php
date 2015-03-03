@@ -50,14 +50,7 @@ function orvsd_siteinfo_generate_token() {
         $service->id = $service_id;
     }
 
-    // Check for a token associated to the siteadmin, if none exists, generate
-    $admin = $DB->get_record_sql(
-        "SELECT value FROM `mdl_config` WHERE `name` LIKE 'siteadmins'",
-        null,
-        IGNORE_MISSING
-    );
-
-    $admin_user = $DB->get_record('user', array('id' => "$admin->value"));
+    $admin_user = $DB->get_record('user', array('username' => "admin"));
     $existing_tokens = $DB->get_record(
         'external_tokens',
         array(
@@ -83,7 +76,7 @@ function orvsd_siteinfo_generate_token() {
         $DB->set_field(
             'external_tokens',
             'creatorid',
-            "$admin_user->id",
+            $admin_user->id,
             array("token"=>"$token")
         );
     }
@@ -117,98 +110,97 @@ function orvsd_siteinfo_get_admin_list() {
     return $result;
 }
 
-
 /**
  * Count users
+ *
+ * @param role user type to count
+ * @param timeframe limit by activity date
+ *
  * @return int
  */
-function orvsd_siteinfo_usercount($role="none", $timeframe=null) {
-    global $CFG, $DB;
+function orvsd_siteinfo_user_count($role="none", $timeframe=null) {
+    global $DB;
 
     switch ($role) {
-      case "teacher":
-        $role_condition = "IN (3,4)";
-        break;
-      case "manager":
-        $role_condition = "= 1";
-        break;
-      case "course_creator":
-        $role_condition = "= 2";
-        break;
-      case "student":
-        $role_condition = "= 5";
-        break;
-      case "guest":
-        $role_condition = "= 6";
-        break;
-      case "authed":
-        $role_condition = "= 7";
-        break;
-      case "frontpage":
-        $role_condition = "= 8";
-        break;
-      default:
-        $role = false;
+        case "teacher":
+            $role_condition = "IN (3,4)";
+            break;
+        case "manager":
+            $role_condition = "= 1";
+            break;
+        case "course_creator":
+            $role_condition = "= 2";
+            break;
+        case "student":
+            $role_condition = "= 5";
+            break;
+        case "guest":
+            $role_condition = "= 6";
+            break;
+        case "authed":
+            $role_condition = "= 7";
+            break;
+        case "frontpage":
+            $role_condition = "= 8";
+            break;
+        default:
+            $role = false;
     }
 
+    $where = '';
     if ($timeframe) {
-      //sql += (append WHERE clause to sql to limit by activity date)
-      $where = "AND mdl_user.lastaccess > $timeframe";
-    } else {
-      $where = '';
+        //sql += (append WHERE clause to sql to limit by activity date)
+        $where = "AND mdl_user.lastaccess > $timeframe";
     }
+
+    $sql = "SELECT COUNT(*)
+            FROM mdl_user
+            WHERE mdl_user.deleted = 0
+            AND mdl_user.confirmed = 1
+            $where";
 
     if($role) {
-      $sql = "SELECT COUNT(DISTINCT userid)
-              FROM mdl_role_assignments
-              LEFT JOIN mdl_user
-              ON mdl_user.id = mdl_role_assignments.userid
-              WHERE mdl_role_assignments.roleid $role_condition
-              $where";
-
-    } else {
-      $sql = "SELECT COUNT(*)
-                FROM mdl_user
-               WHERE mdl_user.deleted = 0
-               AND mdl_user.confirmed = 1
-               $where";
+        $sql = "SELECT COUNT(DISTINCT userid)
+                FROM mdl_role_assignments
+                LEFT JOIN mdl_user
+                ON mdl_user.id = mdl_role_assignments.userid
+                WHERE mdl_user.deleted = 0
+                AND mdl_user.confirmed = 1
+                AND mdl_role_assignments.roleid $role_condition
+                $where";
     }
 
-    $count = $DB->count_records_sql($sql, null);
-
-    return intval($count);
+    return $DB->count_records_sql($sql, null);
 }
-
 
 /**
  * generate list of courses installed here
  * @return array
  */
 function orvsd_siteinfo_courselist() {
-  global $CFG, $DB;
-  // get all course idnumbers
-  $table = 'coursemeta';
-  $conditions = null;
-  $params = null;
-  $sort = 'courseid';
-  $fields = 'courseid,shortname,serial';
-  $courses = $DB->get_records($table,$conditions,$sort,$fields);
+    global $DB;
+    // get all course idnumbers
+    $table = 'coursemeta';
+    $conditions = null;
+    $params = null;
+    $sort = 'courseid';
+    $fields = 'courseid,shortname,serial';
+    $courses = $DB->get_records($table,$conditions,$sort,$fields);
 
-  $course_list = array();
-  foreach($courses as $course) {
-      $shortname = preg_replace('/"/', '', $course->shortname);
-      $shortname = preg_replace("/'/", " ", $shortname);
-      $enrolled = orvsd_siteinfo_get_enrolments($course->courseid);
-      $course_list[] = '{"serial":"' . $course->serial .
-                        '","shortname":"' . htmlentities($shortname) .
-                        '","enrolled":' . $enrolled . '}';
-  }
-
-    $courselist_string = '';
-
-    if (count($course_list) > 0) {
-     $courselist_string = "[" . implode(',', $course_list) . "]";
+    //$course_list = json_encode($courses);
+    $course_list = array();
+    foreach($courses as $course) {
+        $shortname = preg_replace('/"/', '', $course->shortname);
+        $shortname = preg_replace("/'/", " ", $shortname);
+        $enrolled = orvsd_siteinfo_get_enrolments($course->courseid);
+        $course_list[] = array(
+            "serial"=>$course->serial,
+            "shortname"=>htmlentities($shortname),
+            "enrolled"=>$enrolled
+        );
     }
+
+    $courselist_string = json_encode($course_list);
 
     return $courselist_string;
 }
@@ -219,15 +211,20 @@ function orvsd_siteinfo_courselist() {
  * @return array
  */
 function orvsd_siteinfo_get_enrolments($courseid) {
-  global $CFG, $DB;
+    global $DB;
 
-  $sql = "select count(userid)
-          from mdl_enrol
-          left join mdl_user_enrolments
-            on mdl_user_enrolments.enrolid=mdl_enrol.id
-          where mdl_enrol.roleid=5
-          and mdl_enrol.courseid=$courseid";
+    // Consistantly select the role id known as student
+    $student_role_id = $DB->get_field_sql(
+        "SELECT id FROM mdl_role WHERE archetype = ?",
+        array('student')
+    );
 
-  $params = null;
-  return $DB->get_field_sql($sql,$params, IGNORE_MISSING);
+    $sql = "SELECT COUNT(userid)
+            FROM mdl_enrol
+            LEFT JOIN mdl_user_enrolments
+            ON mdl_user_enrolments.enrolid=mdl_enrol.id
+            WHERE mdl_enrol.roleid=$student_role_id
+            AND mdl_enrol.courseid=$courseid";
+
+    return (string)$DB->count_records_sql($sql);
 }

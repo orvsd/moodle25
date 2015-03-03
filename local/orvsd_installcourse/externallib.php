@@ -127,14 +127,6 @@ class local_orvsd_installcourse_external extends external_api {
         if(!$user) {
           return "Failed to create user " . $user_fullname;
         }
-
-        //assign the user to the course
-        $roleid = 3; // "Teacher" role
-        $status = local_orvsd_installcourse_external::assign_user($courseid, $user, $roleid);
-
-        if(!$status) {
-          return "Failed to enrol user " . $user_fullname . " in course " . $coursename;
-        }
     }
 
     return "Course " . $coursename . " created for " . $user_fullname;
@@ -278,37 +270,5 @@ class local_orvsd_installcourse_external extends external_api {
     $hidden = '0';
     $success = $DB->insert_record('role_assignments', $newra);
     return $user;
-  }
-
-  /**
-   * Assign a user a role in a given course
-   */
-  private static function assign_user($courseid, $user, $roleid) {
-    global $DB, $CFG;
-    require_once($CFG->libdir.'/enrollib.php');
-
-    //get enrolment instance (manual and student)
-    $instances = enrol_get_instances($courseid, false);
-    $enrolment = new stdClass();
-    foreach ($instances as $instance) {
-      if ($instance->enrol === 'manual') {
-        $enrolment = $instance;
-        break;
-      }
-    }
-
-    //get enrolment plugin
-    $manual = enrol_get_plugin('manual');
-    $context = get_context_instance(CONTEXT_COURSE,$courseid);
-
-    //$user = $DB->get_record('user', array('email' => trim($line)));
-    if($user && !$user->deleted) {
-      if(!is_enrolled($context,$user)) {
-        $manual->enrol_user($enrolment,$user->id,$roleid,time());
-      }
-    } else {
-      return false;
-    }
-    return true;
   }
 }
