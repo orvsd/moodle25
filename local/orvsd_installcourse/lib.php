@@ -83,65 +83,37 @@ function orvsd_installcourse_update($event_data) {
         }
     }
 
-    $service_id = $DB->get_field('external_services',
-      'id', array('component'=>'local_orvsd'), IGNORE_MISSING);
+    // Look up the service, if it doesn't exist, create it
+    $service = $DB->get_record('external_services', array('component'=>'local_orvsd_installcourse'));
 
-    if($service_id) {
-        echo "Create Course web service is already installed, updating... <br>";
-        $token_id = $DB->get_field('external_tokens',
-            'id', array('externalserviceid'=>$service_id), IGNORE_MISSING);
-    } else {
-        echo "Create Course web service is not already installed, installing... <br>";
-        $token_id = false ;
+    if (!$service) {
+
+        $tmp = $DB->get_records_sql('SHOW TABLE STATUS WHERE name = "mdl_external_services"');
+        $service_id = $tmp['mdl_external_services']->auto_increment;
+
+        $service = new stdClass();
+        $service->id = $service_id;
     }
 
-    $external_token = new stdClass();
-    $external_token->token = "13f6df8a8b66742e02f7b3791710cf84";
-    $external_token->tokentype = 0;
-    $external_token->userid = 2;
-    $external_token->contextid = 1;
-    $external_token->creatorid = 2;
-    $external_token->iprestriction = "140.211.167.136/31,140.211.15.0/24,10.0.0.0/8";
-    // old ip restriction "127.0.0.1,10.0.2.0/8,192.168.33.0/8";
-    $external_token->validuntil = 0;
-    $external_token->timecreated = time();
+    $admin_user = $DB->get_record('user', array('username' => "admin"));
+    $existing_tokens = $DB->get_record('external_tokens', array('userid'=>"$admin_user->id", 'externalserviceid'=>"$service->id"));
 
-    if($service_id) {
-      if($token_id) {
-        echo "Updating Create Course token for user Admin... <br>";
-        $external_token->externalserviceid = $service_id;
-        $external_token->id = $token_id;
+    if (!$existing_tokens) {
+        require('config.php');
+        require_once("$CFG->libdir/externallib.php");
 
-        try {
-            $DB->update_record('external_tokens', $external_token);
-        } catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "<br>";
-            return false;
-        }
-      } else {
-        echo "Installing Create Course token for user Admin... <br>";
-        $external_token->externalserviceid = $service_id;
-        try {
-            $DB->insert_record('external_tokens', $external_token);
-        } catch (Exception $e) {
-            return false;
-        }
-      }
+        // Generate a new token for the Admin User
+        $token = external_generate_token(
+            EXTERNAL_TOKEN_PERMANENT,
+            $service,
+            $admin_user->id,
+            context_system::instance(),
+            $validuntil=0,
+            $IP_RESTRICTION
+        );
 
-    } else {
-      $tmp = $DB->get_records_sql('SHOW TABLE STATUS WHERE name = "mdl_external_services"',null);
-
-      $service_id = $tmp['mdl_external_services']->auto_increment;
-      $external_token->externalserviceid = $service_id;
-      echo "Installing Create Course token for user Admin... <br>";
-
-      try {
-          $DB->insert_record('external_tokens', $external_token);
-      } catch (Exception $e) {
-          return false;
-      }
+        $DB->set_field('external_tokens', 'creatorid', $admin_user->id, array("token"=>"$token"));
     }
-
 
     return true;
 }
